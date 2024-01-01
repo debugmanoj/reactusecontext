@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
+import { DataContext } from '../utils/CardContext';
 
-function Price({total,setTotal,phone,setPhone}) {
+function Price() {
+let {phone,setPhone,total,setTotal}=useContext(DataContext)
+
+
   useEffect(()=>{
     let total=0;
     phone.map((item)=>(item.products.map((val)=>{

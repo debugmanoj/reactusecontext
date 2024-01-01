@@ -1,7 +1,12 @@
 
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
+import { DataContext } from '../utils/CardContext';
 
-function Item({products,image,setQuanatity,quantity,total,setTotal,phone,setPhone}) {
+function Item() {
+  let {image,items,phone,setPhone,products}=useContext(DataContext)
+  
+ 
+  
     let handleDelete=()=>{
       const newPhone = phone.map((item) => ({
         ...item,
@@ -19,14 +24,14 @@ function Item({products,image,setQuanatity,quantity,total,setTotal,phone,setPhon
             return {
               ...val,
               quantity: val.quantity + 1,
-              total: val.total +=val.total
+              total: val.total +=val.OrgPrice
 
             };
           }
           return val;
         }),
       }));
-      console.log(newPhone);
+    
       setPhone(newPhone);
 
     }
@@ -36,10 +41,12 @@ function Item({products,image,setQuanatity,quantity,total,setTotal,phone,setPhon
         ...item,
         products: item.products.map((val) => {
           if(val.id===products.id){
+          
             return {
               ...val,
-              quantity: val.quantity + 1,
-              total: val.total -=val.total
+              quantity: val.quantity - 1,
+              total: val.total -=val.OrgPrice
+              
 
             };
           }
@@ -66,7 +73,7 @@ function Item({products,image,setQuanatity,quantity,total,setTotal,phone,setPhon
       <i className="fas fa-minus" onClick={handleDecrease}></i>
     </button>
 
-    <input id="form1" min="0"  value={products.quantity} onChange={handleIncrease} name="quantity" type="number"
+    <input id="form1" min="0"  value={products.quantity}  name="quantity" type="number"
     
       className="form-control form-control-sm" />
 
