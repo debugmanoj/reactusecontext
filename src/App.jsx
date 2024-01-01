@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from './Component/Card'
-import CardContext from './utils/CardContext'
+
+
 
 function App() {
-  return <CardContext>
+ 
 
-    <Card/>
-  </CardContext>
+  return <Card />
 }
 
 export default App
