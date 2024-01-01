@@ -31,6 +31,23 @@ function Item({products,image,setQuanatity,quantity,total,setTotal,phone,setPhon
 
     }
     let handleDecrease=()=>{
+      const newPhone = phone.map((item) => ({
+        
+        ...item,
+        products: item.products.map((val) => {
+          if(val.id===products.id){
+            return {
+              ...val,
+              quantity: val.quantity + 1,
+              total: val.total -=val.total
+
+            };
+          }
+          return val;
+        }),
+      }));
+      console.log(newPhone);
+      setPhone(newPhone);
       
     }
   return  <div className="row mb-4 d-flex justify-content-between align-items-center">
