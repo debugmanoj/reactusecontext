@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
 import Item from './Item';
 import Price from './Price';
-import CardContext from '../utils/CardContext';
+import { DataContext } from '../utils/CardContext';
 import PriceContextComponent from '../utils/PriceContextComponent';
 
 
 
 
 function Card() {
+  let {phone,setPhone,setTotal,total}=useContext(DataContext)
+
+
   return <>
         <section className="h-100 h-custom" style={{"backgroundColor": "#d2c9ff"}}>
         <div className="container py-5 h-100">
@@ -23,15 +26,26 @@ function Card() {
                          
                         </div>
                         <hr className="my-4" />
-                     <CardContext>
-                      <Item/>
+                        {
+                                          phone.map((e, i) => (
+                                            e.products.map((items,i)=>{
+                                              // console.log(items.images[0]);
+                                              let image=items.images[0];
+                                              let products=items
+                                              
+                                           return  <Item image={image} products={products} phone={phone} setPhone={setPhone} key={i}/>
+                                            })
+                                            // 
+                                          ))
+                        }
+                    
                       
-                      <Price/>
-                      </CardContext>
+                    
+                      
                       
                       </div>
                     </div>
-                   
+                    <Price/>
                   </div>
                 </div>
               </div>

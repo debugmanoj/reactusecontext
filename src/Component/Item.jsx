@@ -1,12 +1,8 @@
 
 import React,{useState,useContext} from 'react'
-import { DataContext } from '../utils/CardContext';
 
-function Item() {
-  let {image,items,phone,setPhone,products}=useContext(DataContext)
-  
- 
-  
+function Item({image,products,phone,setPhone}) {
+  console.log(products);
     let handleDelete=()=>{
       const newPhone = phone.map((item) => ({
         ...item,

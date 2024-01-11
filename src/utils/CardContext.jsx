@@ -219,18 +219,10 @@ function CardContext({children}) {
 {/* <DataContext.Provider value={{phone,setPhone}}>{children}</DataContext.Provider> */}
 let [total,setTotal]=useState("0")
 
-return phone.map((e, i) => (
-    e.products.map((items,i)=>{
-      // console.log(items.images[0]);
-      let image=items.images[0];
-      let products=items
-      
-   return <DataContext.Provider value={{total,setTotal,image,products,items,phone,setPhone}} key={items.id}> 
+return <DataContext.Provider value={{total,setTotal,phone,setPhone}} > 
    {children}
    </DataContext.Provider>
-    })
     // 
-  ))
 }
 
 export default CardContext
